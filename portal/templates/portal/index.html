@@ -1,0 +1,25 @@
+{% extends "portal/base.html" %}
+{% block title %}Home — Mahabharata Portal{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <h2>Welcome</h2>
+    <p>Pick a module:</p>
+
+    <p>
+      <a href="{% url 'chatbot' %}">
+        <button>Q&A Chatbot</button>
+      </a>
+    </p>
+
+    <p>
+      <a href="{% url 'family_tree' %}">
+        <button>Mahabharata Family Tree</button>
+      </a>
+    </p>
+
+    <p class="muted">
+      Tip: You can extend both modules with your 200-page PDF later.
+    </p>
+  </div>
+{% endblock %}

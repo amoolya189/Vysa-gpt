@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kuru Dynasty Family Tree</title>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: "default"
+});
+</script>
+
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#f4f6f9;
+}
+
+.container{
+  width:100%;
+  height:90vh;
+  overflow:auto;
+  border:2px solid #ccc;
+  background:white;
+  padding:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Kuru Dynasty Family Tree</h2>
+
+<div class="container">
+<div class="mermaid">
+graph TD
+
+Kuru --> Anaswan
+Anaswan --> Bheemasena1
+Bheemasena1["Bheemasena (1)"] --> Pratisravas
+Pratisravas --> Pratipa
+Pratipa --> Shantanu
+
+
+
+%% Marriage 0A (Shantanu + Ganga)
+Shantanu -.-> Marriage0A:::marriage
+Ganga -.-> Marriage0A:::marriage
+Marriage0A --> Bhishma
+
+%% Marriage 0B (Shantanu + Satyavati)
+Shantanu -.-> Marriage0B:::marriage
+Satyavati -.-> Marriage0B:::marriage
+Marriage0B --> Chitrangada
+Marriage0B --> Vichitravirya
+
+%% Marriage 03 (Parashara+ Satyavati)
+Parashara -.-> Marriage03:::marriage
+Satyavati -.-> Marriage03:::marriage
+Marriage03 --> Vyasa
+ 
+
+%% Marriage 0C (Vichitravirya + Ambika)
+Vichitravirya -.-> Marriage0C:::marriage
+Ambika -.-> Marriage0C:::marriage
+Marriage0C --> Dhritarashtra
+
+%% Marriage 0D (Vichitravirya + Ambalika)
+Vichitravirya -.-> Marriage0D:::marriage
+Ambalika -.-> Marriage0D:::marriage
+Marriage0D --> Pandu
+
+
+%% Marriage 1
+Dhritarashtra -.-> Marriage1:::marriage
+Gandhari -.-> Marriage1:::marriage
+
+Gandhari --- Shakuni:::bro
+
+Marriage1 --> Duryodhana
+Marriage1 --> Dushasana
+Marriage1 --> Dussala
+Marriage1 --> OtherSons
+
+OtherSons["98 Other Sons"]
+
+%% Marriage 2
+Pandu -.-> Marriage2:::marriage
+Kunti -.-> Marriage2:::marriage
+Madri -.-> Marriage2:::marriage
+
+Marriage2 --> Yudhishthira
+Marriage2 --> Bhima
+Marriage2 --> Arjuna
+Marriage2 --> Nakula
+Marriage2 --> Sahadeva
+Marriage2 --> Karna
+
+%% Marriage 3
+Arjuna -.-> Marriage3:::marriage
+Subhadra -.-> Marriage3:::marriage
+
+Marriage3 --> Abhimanyu
+
+Abhimanyu -.-> Marriage4:::marriage
+Uttara -.-> Marriage4:::marriage
+Marriage4 --> Parikshit
+
+%% Marriage 5
+Parikshit -.-> Marriage5:::marriage
+Madravati -.-> Marriage5:::marriage
+Marriage5 --> Janamejaya
+
+classDef marriage stroke:red,stroke-width:2px;
+classDef bro stroke:yellow,stroke-width:2px;
+
+</div>
+</div>
+<h2>1. ---(dotted straight/curved line and in RED colour) represents Marital relations</h2>
+<h2>2. (curved downward line) represents Next Generation</h2>
+<h2>3. (same level lines connected /not connected and yellow lines) represents Siblings </h2>
+</body>
+</html>
+
