@@ -2,24 +2,134 @@
 {% block title %}Home — Mahabharata Portal{% endblock %}
 
 {% block content %}
-  <div class="card">
-    <h2>Welcome</h2>
-    <p>Pick a module:</p>
 
-    <p>
-      <a href="{% url 'chatbot' %}">
-        <button>Q&A Chatbot</button>
-      </a>
-    </p>
+<style>
+    body {
+        background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+        font-family: 'Georgia', serif;
+        color: #fff;
+        background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+        url("https://www.youngisthan.in/wp-content/uploads/2018/11/title-pic-4-970x546.jpg") no-repeat center center fixed;
 
-    <p>
-      <a href="{% url 'family_tree' %}">
-        <button>Mahabharata Family Tree</button>
-      </a>
-    </p>
+        background-size: cover;       /* Makes image full screen */
+    background-position: center; 
+    }
 
-    <p class="muted">
-      Tip: You can extend both modules with your 200-page PDF later.
-    </p>
-  </div>
+    .hero {
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        background: linear-gradient(to right, #ffd700, #ffcc00);
+        background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        opacity: 0.8;
+        margin-bottom: 40px;
+    }
+
+    .modules {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .module-card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 300px;
+        text-align: center;
+        transition: 0.4s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .module-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+    }
+
+    .module-card h2 {
+        margin-bottom: 15px;
+        color: #ffd700;
+    }
+
+    .module-card p {
+        font-size: 0.95rem;
+        opacity: 0.85;
+        margin-bottom: 25px;
+    }
+
+    .btn-custom {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(45deg, #ffd700, #ffae00);
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background: linear-gradient(45deg, #ffae00, #ffd700);
+        transform: scale(1.05);
+    }
+
+    .footer-tip {
+        margin-top: 50px;
+        text-align: center;
+        opacity: 0.7;
+        font-style: italic;
+    }
+</style>
+
+<div class="hero">
+    <h1>Mahabharata Knowledge Portal</h1>
+    <p>Explore the wisdom, lineage, and timeless teachings of the epic.</p>
+</div>
+
+<div class="modules">
+
+    <div class="module-card">
+        <h2>Q&A Chatbot</h2>
+        <p>Ask any question about characters, events, or philosophy from the Mahabharata.</p>
+        <a href="{% url 'chatbot' %}">
+            <button class="btn-custom">Start Asking</button>
+        </a>
+    </div>
+
+    <div class="module-card">
+        <h2>ARJUNA! The Fighter</h2>
+        <p>Want to play a nice game , arjuna need to score more points!!!,kill soldiers in black and jump over kings in colours...</p>
+        <a href="{% url 'game' %}">
+            <button class="btn-custom">Click to Play</button>
+        </a>
+    </div>
+
+    <div class="module-card">
+        <h2>Family Tree</h2>
+        <p>Visualize and explore the royal lineages and relationships in the epic.</p>
+        <a href="{% url 'family_tree' %}">
+            <button class="btn-custom">View Tree</button>
+        </a>
+    </div>
+
+</div>
+
+<div class="footer-tip">
+</div>
+
 {% endblock %}

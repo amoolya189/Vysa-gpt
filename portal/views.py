@@ -19,6 +19,9 @@ def chatbot(request):
 def family_tree(request):
     return render(request, "portal/family_tree.html")
 
+def game(request):
+    return render(request, 'portal/game.html')
+
 
 # ---------------- CHATBOT API ----------------
 

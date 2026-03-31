@@ -9,31 +9,54 @@
 <script>
 mermaid.initialize({
   startOnLoad: true,
-  theme: "default"
+  theme: "default",
+  securityLevel: "loose"
 });
+
 </script>
 
 <style>
 body{
   font-family: Arial;
-  text-align:center;
+  margin:0;
   background:#f4f6f9;
 }
 
+.wrapper{
+  display:flex;
+  height:100vh;
+}
+
 .container{
-  width:100%;
-  height:90vh;
+  width:70%;
   overflow:auto;
-  border:2px solid #ccc;
-  background:white;
   padding:20px;
+  background:white;
+}
+
+.details-panel{
+  width:30%;
+  background:#eef2f7;
+  padding:20px;
+  border-left:3px solid #ccc;
+}
+
+.details-panel img{
+  width:100%;
+  border-radius:10px;
+}
+
+.mermaid div{
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<h2>Kuru Dynasty Family Tree</h2>
+<h2 style="text-align:center;">Kuru Dynasty Family Tree</h2>
+
+<div class="wrapper">
 
 <div class="container">
 <div class="mermaid">
@@ -45,42 +68,36 @@ Bheemasena1["Bheemasena (1)"] --> Pratisravas
 Pratisravas --> Pratipa
 Pratipa --> Shantanu
 
-
-
-%% Marriage 0A (Shantanu + Ganga)
+%% Marriage 0A
 Shantanu -.-> Marriage0A:::marriage
 Ganga -.-> Marriage0A:::marriage
 Marriage0A --> Bhishma
 
-%% Marriage 0B (Shantanu + Satyavati)
+%% Marriage 0B
 Shantanu -.-> Marriage0B:::marriage
 Satyavati -.-> Marriage0B:::marriage
 Marriage0B --> Chitrangada
 Marriage0B --> Vichitravirya
 
-%% Marriage 03 (Parashara+ Satyavati)
+%% Marriage 03
 Parashara -.-> Marriage03:::marriage
 Satyavati -.-> Marriage03:::marriage
 Marriage03 --> Vyasa
- 
 
-%% Marriage 0C (Vichitravirya + Ambika)
+%% Marriage 0C
 Vichitravirya -.-> Marriage0C:::marriage
 Ambika -.-> Marriage0C:::marriage
 Marriage0C --> Dhritarashtra
 
-%% Marriage 0D (Vichitravirya + Ambalika)
+%% Marriage 0D
 Vichitravirya -.-> Marriage0D:::marriage
 Ambalika -.-> Marriage0D:::marriage
 Marriage0D --> Pandu
 
-
 %% Marriage 1
 Dhritarashtra -.-> Marriage1:::marriage
 Gandhari -.-> Marriage1:::marriage
-
 Gandhari --- Shakuni:::bro
-
 Marriage1 --> Duryodhana
 Marriage1 --> Dushasana
 Marriage1 --> Dussala
@@ -92,7 +109,6 @@ OtherSons["98 Other Sons"]
 Pandu -.-> Marriage2:::marriage
 Kunti -.-> Marriage2:::marriage
 Madri -.-> Marriage2:::marriage
-
 Marriage2 --> Yudhishthira
 Marriage2 --> Bhima
 Marriage2 --> Arjuna
@@ -103,7 +119,6 @@ Marriage2 --> Karna
 %% Marriage 3
 Arjuna -.-> Marriage3:::marriage
 Subhadra -.-> Marriage3:::marriage
-
 Marriage3 --> Abhimanyu
 
 Abhimanyu -.-> Marriage4:::marriage
@@ -118,11 +133,110 @@ Marriage5 --> Janamejaya
 classDef marriage stroke:red,stroke-width:2px;
 classDef bro stroke:yellow,stroke-width:2px;
 
+%% Click Events
+click Kuru showDetails
+click Anaswan showDetails
+click Bheemasena1 showDetails
+click Pratisravas showDetails
+click Pratipa showDetails
+click Shantanu showDetails
+click Ganga showDetails
+click Satyavati showDetails
+click Bhishma showDetails
+click Chitrangada showDetails
+click Vichitravirya showDetails
+click Parashara showDetails
+click Vyasa showDetails
+click Ambika showDetails
+click Ambalika showDetails
+click Dhritarashtra showDetails
+click Gandhari showDetails
+click Shakuni showDetails
+click Duryodhana showDetails
+click Dushasana showDetails
+click Dussala showDetails
+click Pandu showDetails
+click Kunti showDetails
+click Madri showDetails
+click Yudhishthira showDetails
+click Bhima showDetails
+click Arjuna showDetails
+click Nakula showDetails
+click Sahadeva showDetails
+click Karna showDetails
+click Subhadra showDetails
+click Abhimanyu showDetails
+click Uttara showDetails
+click Parikshit showDetails
+click Madravati showDetails
+click Janamejaya showDetails
 </div>
 </div>
-<h2>1. ---(dotted straight/curved line and in RED colour) represents Marital relations</h2>
-<h2>2. (curved downward line) represents Next Generation</h2>
-<h2>3. (same level lines connected /not connected and yellow lines) represents Siblings </h2>
+
+<div class="details-panel">
+  <img id="personImage" src="">
+  <h2 id="personName">Click a Person</h2>
+  <p id="personDesc">Details will appear here...</p>
+</div>
+
+</div>
+
+<script>
+
+const peopleData = {
+
+Kuru:{img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx9Pzb6x4B--OaqwSKIPq30eb4W2cOMlPGHQ&s ",desc:"Kuru is the name of the ancestor of the clan of the Kurus in the Mahabharata. He was the son of Samvarana and of Tapati, the daughter of the Sun.In the literature, Kuru is an ancestor of Pandu and his descendants, the Pandavas, and also of Dhritarashtra and his descendants, the Kauravas. This latter name derived as a patronym from Kuru, is only used for the descendants of Dhritarashtra.King Kuru had two wives named Shubhangi and Vahini. He had a son named Viduratha with Shubhangi, and five sons with Vahini, named Ashvavat, Abhishyat, Citraratha, Muni, and Janamejaya.[42][43] Due to his merits and great ascetic practices the region Kurujangal was named after him. It has also been known as Kurukshetra since ancient Vedic times"},
+Anaswan:{img:" ",desc:"A minor ancestor in the lineage of the Puru dynasty and the Kuru clan.He appears in genealogical lists of the Kuru kings, specifically as a descendant in the line that leads toward Shantanu, Bhishma, and the Pandavas/Kauravas."},
+Bheemasena1:{img:"https://hindupost.in/wp-content/uploads/2020/04/bhima-pandava.png",desc:"Bheemasena (Bhima) is the second Pandava brother in the Mahabharata, renowned as the strongest, most heroic warrior, and an incarnation of Vayu (the wind god). He is characterized by immense physical strength, unwavering loyalty to Krishna, and a fierce, yet righteous nature, often described as terrifying or formidable to his enemies."},
+Pratisravas:{img:"",desc:"Pratīsravas is the father of Pratipa, and therefore:Great-grandfather of Bhishma.Ancestor of the Kauravas and Pandavas"},
+Pratipa:{img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSroXY-4T7_kRXzFQ1tZ77hDADy7lgmI1lcxA&s",desc:"He is a legendary king in Hinduism. He is the king of Hastinapura and a member of the Lunar dynasty. He is the father of Shantanu and the grandfather of Bhishma,Chitrangada, and Vichitravirya. The king is mentioned in the Hindu epic Mahabharata."},
+Shantanu:{img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdG8INn9yUhgTlG75L_KbahnswFpPJcHKb1Q&s",desc:"Shantanu is a character in the ancient Hindu epic Mahabharata. He was the King of Kuru kingdom with his capital at Hastinapura.He was a descendant of the Bharata race, a forebear of the lineage of the Chandravamsha, the father of Bhishma and the great-grandfather of the Pandavas and the Kauravas.Shantanu was the youngest son of King Pratipa of Hastinapura and had been born during the king's later years. His eldest brother, Devapi, had leprosy, and had given up his rightful claim before becoming a hermit. The middle son, Bahlika (or Vahlika), abandoned his birth kingdom, and had started living with his maternal uncle in Balkh, subsequently inheriting his kingdom. Shantanu, thus, ascended the throne of Hastinapura."},
+Ganga:{img:" ",desc:"Ganga is the personification of the river Ganges, who is worshipped by Hindus as the goddess of purification and forgiveness. Known by many names, Ganga is often depicted as a fair, beautiful woman, riding a divine crocodile-like creature called the makaraIn Hinduism, Ganga is seen as a mother to humanity. Pilgrims immerse the ashes of their kin in the river Ganga, which is considered by them to bring the souls (purified spirits) closer to moksha, the liberation from the cycle of life and death. Festivals like Ganga Dussehra and Ganga Jayanti are celebrated in her honour at several sacred places, which lie along the banks of the Ganges, including Gangotri, Haridwar, Prayagraj, Varanasi and Kali Ghat in Kolkata.  "},
+Satyavati:{img:"https://whereicanbreathe.wordpress.com/wp-content/uploads/2021/06/0e1ffecdb1792685cfc224f3086e4fc48587799037954482573.jpg",desc:"Satyavati is a character in the ancient Hindu epic Mahabharata. She was the queen of the Kuru kingdom, married to king Shantanu of Hastinapura, and is a great-grandmother of the Pandava and Kaurava princes. She is also the mother of the seer Vyasa, author of the epic. Her story appears in the Mahabharata, the Harivamsa, and the Devi Bhagavata Purana."},
+Bhishma:{img:"https://vatvriksh.com/wp-content/uploads/2025/05/bhishma-on-his-death-bed-in-mahabharata-war.webp",desc:"Bhishma also known as Pitāmaha, Gangāputra, and Devavrata, is a central figure in the Hindu epic Mahabharata. He was a statesman and military commander of the ancient Kuru kingdom. Renowned for his wisdom, valor, skill in battle and unwavering principles, Bhishma served as the supreme commander of the Kaurava forces during the first ten days of the Kurukshetra War until his fall."},
+Chitrangada:{img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTht0Oto4KKDhDS_rUwSv1mATJW2IA2mhoTzQ&s",desc:"Chitrāngada  was the king of Kuru Mahajanapada with his capital Hastinapura. He belonged to the Lunar Dynasty of Bharata Tribe He was the elder son of Shantanu and Satyavati, who ascended the throne of Hastinapura after his father's death.Following the wishes of queen Satyavati, Bhishma had placed Chitrangada on the throne of the kingdom of the Kurus after Shantanu's departure. Chitrangada was a great warrior and defeated many powerful enemies and Asuras. But soon he developed pride and began disrespecting everyone.Bhishma who tried to correct his young brother's bad behaviour was ignored and rendered powerless on account of his oath to perpetually serve the Kuru King. Finally, the king of the Gandharvas, who was his namesake, came to challenge him saying there could be only one Chitrangada which was himself. A fierce battle took place between the two warriors on the bank of the river Hiranyavati, lasting three years. In the end the king of the Gandharvas defeated the Kuru king and killed him.After having performed the rites of the dead, Bhishma immediately consecrated Chitrangada's younger brother Vichitravirya to the kingdom."},
+Vichitravirya:{img:"",desc:"Vichitravirya  is a figure in the Mahabharata, where he is featured as a Kuru king.According to the Hindu epic, he is the youngest son of Queen Satyavati and King Shantanu, and the de jure grandfather of the Pandavas and the Kauravas. He is also the half-brother of Krishna Dvaipayana Vyasa and Bhishma.Vichitravirya has an elder brother named Chitrāngada, whom his half-brother Bhishma placed on the throne of the kingdom of the Kurus after Shantanu's death; he is a mighty warrior, but the king of the Gandharvas defeats and kills him at the end of a long battle. Thereafter, Bhishma consecrates Vichitravirya, who is still a child, as the new king"},
+Parashara:{img:"",desc:""},
+Vyasa:{img:"",desc:" "},
+Ambika:{img:"",desc:"Mother of Dhritarashtra."},
+Ambalika:{img:"",desc:"Mother of Pandu."},
+Dhritarashtra:{img:"",desc:"Blind king and father of Kauravas."},
+Gandhari:{img:"",desc:"Queen and mother of 100 Kauravas."},
+Shakuni:{img:"",desc:"Brother of Gandhari and strategist."},
+Duryodhana:{img:"",desc:"Eldest Kaurava."},
+Dushasana:{img:"",desc:"Brother of Duryodhana."},
+Dussala:{img:"",desc:"Only sister of Kauravas."},
+Pandu:{img:"",desc:"Father of Pandavas."},
+Kunti:{img:"",desc:"Mother of Pandavas."},
+Madri:{img:"",desc:"Second wife of Pandu."},
+Yudhishthira:{img:"",desc:"Eldest Pandava."},
+Bhima:{img:"",desc:"Strongest Pandava."},
+Arjuna:{img:"",desc:"Greatest archer."},
+Nakula:{img:"",desc:"Son of Madri."},
+Sahadeva:{img:"",desc:"Son of Madri."},
+Karna:{img:"",desc:"Son of Kunti and Surya."},
+Subhadra:{img:"",desc:"Sister of Krishna and wife of Arjuna."},
+Abhimanyu:{img:"",desc:"Son of Arjuna."},
+Uttara:{img:"",desc:"Wife of Abhimanyu."},
+Parikshit:{img:"",desc:"Grandson of Arjuna."},
+Madravati:{img:"",desc:"Wife of Parikshit."},
+Janamejaya:{img:"",desc:"Son of Parikshit."}
+
+};
+
+function showDetails(id){
+  if(peopleData[id]){
+    document.getElementById("personImage").src = peopleData[id].img;
+    document.getElementById("personName").innerText = id;
+    document.getElementById("personDesc").innerText = peopleData[id].desc;
+  }
+}
+
+</script>
+<h3>
+  yellow represents same generation siblings<br>
+  red represents marriages with dotted arrows<br>
+  sub trees represent next generation
+</h3>
 </body>
 </html>
-
