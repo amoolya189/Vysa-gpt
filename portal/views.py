@@ -22,6 +22,9 @@ def family_tree(request):
 def game(request):
     return render(request, 'portal/game.html')
 
+def quiz(request):
+    return render(request, 'portal/quiz.html')
+
 
 # ---------------- CHATBOT API ----------------
 
