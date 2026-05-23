@@ -34,3 +34,10 @@ test\Scripts\activate
 ```bash
 python manage.py runserver
 ```
+
+install the packages required
+Django
+sentence-transformers
+faiss-cpu
+google-genai
+and more
